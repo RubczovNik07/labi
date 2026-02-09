@@ -14,10 +14,18 @@ sites = {
 
 distances = {}
 
+# Заполняем словарь расстояний
+for city1, coord1 in sites.items():
+    distances[city1] = {}
+    for city2, coord2 in sites.items():
+        if city1 != city2:
+            # Вычисляем расстояние между двумя городами
+            distance = ((coord1[0] - coord2[0]) ** 2 + (coord1[1] - coord2[1]) ** 2) ** 0.5
+            distances[city1][city2] = distance
+        else:
+            # Расстояние от города до самого себя равно 0
+            distances[city1][city2] = 0.0
+
 # TODO здесь заполнение словаря
 
 print(distances)
-
-
-
-
