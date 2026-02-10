@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-
 # Есть список песен группы Depeche Mode со временем звучания с точностью до долей минут
 # Точность указывается в функции round(a, b)
 # где a, это число которое надо округлить, а b количество знаков после запятой
@@ -19,11 +18,17 @@ violator_songs_list = [
 ]
 
 # распечатайте общее время звучания трех песен: 'Halo', 'Enjoy the Silence' и 'Clean' в формате
-#   Три песни звучат ХХХ.XX минут
+# При песни звучат XXX.XX минут
 # Обратите внимание, что делать много вычислений внутри print() - плохой стиль.
-# Лучше заранее вычислить необходимое, а затем в print(xxx, yyy, zzz)
+# Лучше заранее вычислить необходимое, а затем в print(XXX, YYY, ZZZ)
 
 # TODO здесь ваш код
+total_time_list = 0
+for song in violator_songs_list:
+    if song[0] in ['Halo', 'Enjoy the Silence', 'Clean']:
+        total_time_list += song[1]
+
+print(f'Три песни звучат {round(total_time_list, 2)} минут')
 
 # Есть словарь песен группы Depeche Mode
 violator_songs_dict = {
@@ -39,6 +44,12 @@ violator_songs_dict = {
 }
 
 # распечатайте общее время звучания трех песен: 'Sweetest Perfection', 'Policy of Truth' и 'Blue Dress'
-#   А другие три песни звучат ХХХ минут
+# А другие три песни звучат XXX минут
 
 # TODO здесь ваш код
+total_time_dict = 0
+songs_to_sum = ['Sweetest Perfection', 'Policy of Truth', 'Blue Dress']
+for song_name in songs_to_sum:
+    total_time_dict += violator_songs_dict[song_name]
+
+print(f'А другие три песни звучат {round(total_time_dict, 2)} минут')
