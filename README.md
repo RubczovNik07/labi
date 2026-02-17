@@ -60,7 +60,7 @@ for city1, coord1 in sites.items():
         else:
             distances[city1][city2] = 0.0
 
-print(distances)
+print(distances)```
 
 **Результат:** На консоль выводится словарь, где ключ — название города, а значение — другой словарь с расстояниями до остальных городов.
 
