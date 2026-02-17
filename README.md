@@ -382,14 +382,8 @@ git remote add origin <URL> - привязка локального репози
 
 ## Список использованных источников
 
-Официальная документация Python
-
-Git Cheat Sheet (GitHub)
-
-Markdown Cheat Sheet
-
-Интерактивный учебник по Python (pythontutor.ru)
-
-Matplotlib cheatsheets and handouts
-
-Writing mathematical expressions (Matplotlib)
+1. [Matplotlib cheatsheets and handouts](https://matplotlib.org/cheatsheets/)
+2. [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/)
+3. [Writing mathematical expressions](https://matplotlib.org/stable/tutorials/text/mathtext.html)
+4. [Официальная документация Python](https://docs.python.org/3/)
+5. [Git Cheat Sheet (GitHub)](https://training.github.com/downloads/ru/github-git-cheat-sheet/)
