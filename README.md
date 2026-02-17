@@ -387,3 +387,4 @@ git remote add origin <URL> - привязка локального репози
 3. [Writing mathematical expressions](https://matplotlib.org/stable/tutorials/text/mathtext.html)
 4. [Официальная документация Python](https://docs.python.org/3/)
 5. [Git Cheat Sheet (GitHub)](https://training.github.com/downloads/ru/github-git-cheat-sheet/)
+6. [Интерактивный учебник по Python](https://pythontutor.ru/)
