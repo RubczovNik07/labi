@@ -60,7 +60,8 @@ for city1, coord1 in sites.items():
         else:
             distances[city1][city2] = 0.0
 
-print(distances)```
+print(distances)
+```
 
 **Результат:** На консоль выводится словарь, где ключ — название города, а значение — другой словарь с расстояниями до остальных городов.
 
@@ -91,6 +92,7 @@ print(distance_1 <= radius)
 point_2 = (30, 30)
 distance_2 = (point_2[0] ** 2 + point_2[1] ** 2) ** 0.5
 print(distance_2 <= radius)
+```
 
 ![Результат 01_circle.py](Снимок01.PNG)
 *Рисунок 2 - Вывод программы 01_circle.py*
@@ -105,6 +107,7 @@ print(distance_2 <= radius)
 # Фрагмент кода 02_operations.py
 result = (1 + 2) * 3 + 4 * 5
 print(result)
+```
 
 ![Результат 02_operations.py](Снимок02.PNG)
 *Рисунок 3 - Вывод программы 02_operations.py*
@@ -139,6 +142,7 @@ print(second_movie)
 # Второй с конца
 second_from_end = my_favorite_movies[comma3 + 2:comma4]
 print(second_from_end)
+```
 
 ![Результат 03_favorite_movies.py](Снимок03.PNG)
 *Рисунок 4 - Вывод программы 03_favorite_movies.py*
@@ -172,6 +176,7 @@ total_height = 0
 for member in my_family_height:
     total_height += member[1]
 print(f"Общий рост моей семьи - {total_height} см")
+```
 
 ![Результат 04_my_family.py](Снимок04.PNG)
 *Рисунок 5 - Вывод программы 04_my_family.py*
@@ -204,6 +209,7 @@ lion_cage = zoo.index('lion') + 1
 lark_cage = zoo.index('lark') + 1
 print(f"Лев сидит в клетке номер {lion_cage}")
 print(f"Жаворонок сидит в клетке номер {lark_cage}")
+```
 
 ![Результат 05_zoo.py](Снимок05.PNG)
 *Рисунок 6 - Вывод программы 05_zoo.py*
@@ -231,6 +237,7 @@ songs_to_sum = ['Sweetest Perfection', 'Policy of Truth', 'Blue Dress']
 for song_name in songs_to_sum:
     total_time_dict += violator_songs_dict[song_name]
 print(f'А другие три песни звучат {round(total_time_dict, 2)} минут')
+```
 
 ![Результат 06_songs_list.py](Снимок06.PNG)
 *Рисунок 7 - Вывод программы 06_songs_list.py*
@@ -258,6 +265,7 @@ word4 = secret_message[3][12:6:-1]                # с 9 по 7 в обратн�
 word5 = secret_message[4][20:16:-1]                # с 21 по 18 в обратном порядке (20:16:-1)
 
 print(f"{word1} {word2} {word3} {word4} {word5}")
+```
 
 ![Результат 07_secret.py](Снимок07.PNG)
 *Рисунок 8 - Вывод программы 07_secret.py*
@@ -287,6 +295,7 @@ print("Цветы, растущие только в саду:", sorted(only_gard
 
 only_meadow = meadow_set.difference(garden_set)
 print("Цветы, растущие только на лугу:", sorted(only_meadow))
+```
 
 ![Результат 08_garden.py](Снимок08.PNG)
 *Рисунок 9 - Вывод программы 08_garden.py*
@@ -325,6 +334,7 @@ sweets = {
 }
 
 print(sweets)
+```
 
 ![Результат 09_shopping.py](Снимок09.PNG)
 *Рисунок 10 - Вывод программы 09_shopping.py*
@@ -348,6 +358,7 @@ lamp_cost = lamp_quantity * lamp_price
 print(f'Лампа - {lamp_quantity} шт, стоимость {lamp_cost} руб')
 
 # ... (аналогично для Стола, Дивана, Стула, но с суммированием по нескольким партиям) ...
+```
 
 ![Результат 10_store.py](Снимок10.PNG)
 *Рисунок 11 - Вывод программы 10_store.py*
