@@ -64,10 +64,8 @@ print(distances)
 ```
 
 **Результат:** На консоль выводится словарь, где ключ — название города, а значение — другой словарь с расстояниями до остальных городов.
-<img width="816" height="103" alt="Снимок00" src="https://github.com/user-attachments/assets/3af510b4-d14d-4e6d-b78d-dbb0ad2a1e5f" />
 
-![Результат 00_distance.py](Снимок00.PNG)
-*Рисунок 1 - Вывод программы 00_distance.py*
+<img width="816" height="103" alt="Снимок00" src="https://github.com/user-attachments/assets/3af510b4-d14d-4e6d-b78d-dbb0ad2a1e5f" />
 
 ### Задание 01: Площадь круга и точка внутри
 
@@ -95,8 +93,8 @@ distance_2 = (point_2[0] ** 2 + point_2[1] ** 2) ** 0.5
 print(distance_2 <= radius)
 ```
 
-![Результат 01_circle.py](Снимок01.PNG)
-*Рисунок 2 - Вывод программы 01_circle.py*
+<img width="832" height="99" alt="Снимок01" src="https://github.com/user-attachments/assets/18c2085c-29d9-4106-90ee-89a01d47de66" />
+
 
 ### Задание 02: Арифметические операции
 
@@ -110,8 +108,8 @@ result = (1 + 2) * 3 + 4 * 5
 print(result)
 ```
 
-![Результат 02_operations.py](Снимок02.PNG)
-*Рисунок 3 - Вывод программы 02_operations.py*
+<img width="847" height="67" alt="Снимок02" src="https://github.com/user-attachments/assets/6addf7db-7209-4b55-b9b5-572cbf4bb223" />
+
 
 ### Задание 03: Индексация строк
 
@@ -145,8 +143,8 @@ second_from_end = my_favorite_movies[comma3 + 2:comma4]
 print(second_from_end)
 ```
 
-![Результат 03_favorite_movies.py](Снимок03.PNG)
-*Рисунок 4 - Вывод программы 03_favorite_movies.py*
+<img width="825" height="131" alt="Снимок03" src="https://github.com/user-attachments/assets/34cef810-d986-4d1d-9e79-e5a70b345c93" />
+
 
 ### Задание 04: Моя семья (списки)
 
@@ -179,8 +177,8 @@ for member in my_family_height:
 print(f"Общий рост моей семьи - {total_height} см")
 ```
 
-![Результат 04_my_family.py](Снимок04.PNG)
-*Рисунок 5 - Вывод программы 04_my_family.py*
+<img width="853" height="79" alt="Снимок04" src="https://github.com/user-attachments/assets/ca606966-1156-4610-9595-f9d51de55cc7" />
+
 
 ### Задание 05: Зоопарк (списки)
 
@@ -212,8 +210,8 @@ print(f"Лев сидит в клетке номер {lion_cage}")
 print(f"Жаворонок сидит в клетке номер {lark_cage}")
 ```
 
-![Результат 05_zoo.py](Снимок05.PNG)
-*Рисунок 6 - Вывод программы 05_zoo.py*
+<img width="826" height="135" alt="Снимок05" src="https://github.com/user-attachments/assets/023d68e3-e4ab-4a86-834e-03c0513e1a11" />
+
 
 ### Задание 06: Песни Depeche Mode (список и словарь)
 
@@ -240,8 +238,8 @@ for song_name in songs_to_sum:
 print(f'А другие три песни звучат {round(total_time_dict, 2)} минут')
 ```
 
-![Результат 06_songs_list.py](Снимок06.PNG)
-*Рисунок 7 - Вывод программы 06_songs_list.py*
+<img width="842" height="87" alt="Снимок06" src="https://github.com/user-attachments/assets/3b75dad9-7152-40bf-93ed-dc09eb4bcc69" />
+
 
 ### Задание 07: Секретное сообщение
 
@@ -268,8 +266,8 @@ word5 = secret_message[4][20:16:-1]                # с 21 по 18 в обрат
 print(f"{word1} {word2} {word3} {word4} {word5}")
 ```
 
-![Результат 07_secret.py](Снимок07.PNG)
-*Рисунок 8 - Вывод программы 07_secret.py*
+<img width="843" height="69" alt="Снимок07" src="https://github.com/user-attachments/assets/73e2c062-555b-4949-9de6-6e3f4db9b535" />
+
 
 ### Задание 08: Сад и луг (множества)
 
@@ -298,8 +296,8 @@ only_meadow = meadow_set.difference(garden_set)
 print("Цветы, растущие только на лугу:", sorted(only_meadow))
 ```
 
-![Результат 08_garden.py](Снимок08.PNG)
-*Рисунок 9 - Вывод программы 08_garden.py*
+<img width="822" height="141" alt="Снимок08" src="https://github.com/user-attachments/assets/23543c03-ecb3-4f8f-b8f7-b7bb34d0a60e" />
+
 
 ### Задание 09: Магазины и сладости (словари)
 
@@ -337,8 +335,8 @@ sweets = {
 print(sweets)
 ```
 
-![Результат 09_shopping.py](Снимок09.PNG)
-*Рисунок 10 - Вывод программы 09_shopping.py*
+<img width="839" height="135" alt="Снимок09" src="https://github.com/user-attachments/assets/390b4363-2b8e-4c16-af80-c0d61feeaa38" />
+
 
 ### Задание 10: Склад (словари и циклы)
 
@@ -361,8 +359,8 @@ print(f'Лампа - {lamp_quantity} шт, стоимость {lamp_cost} руб
 # ... (аналогично для Стола, Дивана, Стула, но с суммированием по нескольким партиям) ...
 ```
 
-![Результат 10_store.py](Снимок10.PNG)
-*Рисунок 11 - Вывод программы 10_store.py*
+<img width="825" height="107" alt="Снимок10" src="https://github.com/user-attachments/assets/a8b0531b-bc7c-4419-a163-c01e6617559b" />
+
 
 ## Шпаргалка по работе с Git
 В процессе выполнения работы использовалась система контроля версий Git. Вот основные команды:
