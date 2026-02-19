@@ -63,8 +63,6 @@ for city1, coord1 in sites.items():
 print(distances)
 ```
 
-**Результат:** На консоль выводится словарь, где ключ — название города, а значение — другой словарь с расстояниями до остальных городов.
-
 <img width="816" height="103" alt="Снимок00" src="https://github.com/user-attachments/assets/3af510b4-d14d-4e6d-b78d-dbb0ad2a1e5f" />
 
 ### Задание 01: Площадь круга и точка внутри
