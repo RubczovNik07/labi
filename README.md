@@ -266,7 +266,7 @@ word5 = secret_message[4][20:16:-1]                # с 21 по 18 в обрат
 print(f"{word1} {word2} {word3} {word4} {word5}")
 ```
 
-<img width="843" height="69" alt="Снимок07" src="https://github.com/user-attachments/assets/73e2c062-555b-4949-9de6-6e3f4db9b535" />
+<img width="619" height="54" alt="image" src="https://github.com/user-attachments/assets/2f3153ab-0bff-464f-8c62-ac96ab1f3159" />
 
 
 ### Задание 08: Сад и луг (множества)
