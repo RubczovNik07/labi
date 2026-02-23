@@ -131,3 +131,23 @@ for i, (n, m) in enumerate(numbers_with_m, 1):
 **Вывод программы:**
 
 <img width="389" height="156" alt="image" src="https://github.com/user-attachments/assets/e52a9fa0-0743-4713-a9a9-bfc1af6aa313" />
+
+**Значения M(N) в порядке возрастания соответствующих чисел N:**
+[2709, 30030, 2520, 61845, 22770]
+
+**Детальный анализ найденных чисел:**
+
+| № | N | M(N) | 5 наименьших делителей |
+|---|------|------|------------------------|
+| 1 | 200000001 | 2709 | [3, 9, 11, 33, 37] |
+| 2 | 200000002 | 30030 | [2, 7, 13, 17, 19] |
+| 3 | 200000004 | 2520 | [2, 3, 4, 5, 6] |
+| 4 | 200000005 | 61845 | [5, 7, 11, 13, 15] |
+| 5 | 200000006 | 22770 | [2, 3, 5, 6, 9] |
+
+## Список использованных источников
+
+1. [Документация Python: itertools](https://docs.python.org/3/library/itertools.html)
+2. [Документация Python: math](https://docs.python.org/3/library/math.html)
+3. [Markdown Cheat Sheet](https://www.markdownguide.org/cheat-sheet/) 
+4. [Writing mathematical expressions](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions)
