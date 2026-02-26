@@ -115,12 +115,13 @@ print(result)
 
 # TODO написать формулу для 1 2 3 4 5 и вывести значение на консоль
 
-# Решение: (1 + 2) * 3 + 4 * 5
-result = (1 + 2) * 3 + 4 * 5
+# Решение: 1 * (2 + 3) + (4 * 5)
+result = 1 * (2 + 3) + (4 * 5)
 print(result)  # Выведет 25
 ```
 
-<img width="847" height="67" alt="Снимок02" src="https://github.com/user-attachments/assets/6addf7db-7209-4b55-b9b5-572cbf4bb223" />
+<img width="652" height="52" alt="image" src="https://github.com/user-attachments/assets/8a39a989-33f5-424a-8113-4ace60c97abc" />
+
 
 
 ### Задание 03: Индексация строк
