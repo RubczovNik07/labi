@@ -84,7 +84,7 @@ print(f"Задача 2: {task2()} единиц")
 import math
 
 def find_divisors(n):
-    """Находит все делители числа n (кроме 1)"""
+    #Находит все делители числа n (кроме 1)
     divisors = set()
     for i in range(2, int(math.sqrt(n)) + 1):
         if n % i == 0:
@@ -94,7 +94,7 @@ def find_divisors(n):
     return sorted(divisors)
 
 def M(n):
-    """Вычисляет M(n) - произведение 5 наименьших делителей"""
+    #Вычисляет M(n) - произведение 5 наименьших делителей
     divisors = find_divisors(n)
     if len(divisors) < 5:
         return 0
