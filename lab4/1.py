@@ -30,10 +30,7 @@ def create_hero(initial_hp=100):
 
 # Декоратор для подавления вывода функции на консоль
 def suppress_console_output(func):
-    """
-    Декоратор для подавления вывода функции на консоль.
-    Перенаправляет stdout в буфер и восстанавливает после выполнения.
-    """
+
     def wrapper(*args, **kwargs):
         # Сохраняем оригинальный stdout
         original_stdout = sys.stdout
