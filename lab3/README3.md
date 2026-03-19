@@ -94,10 +94,10 @@ def calculate_yk_iterative(x, k):
         y = b * y          # yk = bk * y_{k-1}
     return y
 # Примеры использования
-print(f"y1 для x=2: {calculate_yk_recursive(2, 1)}")  # Должно быть 1.0
-print(f"y2 для x=2: {calculate_yk_iterative(2, 2)}")  # Должно быть 4.0
-print(f"y3 для x=2: {calculate_yk_recursive(2, 3)}")  # Должно быть 64.0
-print(f"y2 для x=3: {calculate_yk_iterative(3, 2)}")  # Должно быть 20.25
+print(f"y1 для x=2: {calculate_yk_recursive(2, 1)}")  
+print(f"y2 для x=2: {calculate_yk_iterative(2, 2)}")  
+print(f"y3 для x=2: {calculate_yk_recursive(2, 3)}")  
+print(f"y2 для x=3: {calculate_yk_iterative(3, 2)}")  
 
 
 ```
