@@ -91,7 +91,6 @@ if __name__ == "__main__":
     
     @suppress_console_output
     def test_hero_actions():
-        print("Этот текст не появится в консоли")  # Будет подавлен
         print(hero3("heal", 100))  # Должен показать 50 -> 100
         print(hero3("damage", 150))  # Должен показать 100 -> 0
         print(hero3("reset"))  # Должен показать 0 -> 100
