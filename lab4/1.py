@@ -3,10 +3,7 @@ from io import StringIO
 
 # Замыкание для отслеживания HP героя
 def create_hero(initial_hp=100):
-    """
-    Замыкание для создания героя с отслеживанием HP.
-    HP не может быть больше 100 и меньше 0.
-    """
+
     current_hp = max(0, min(initial_hp, 100))  # Ограничиваем начальное значение
     
     def handle_action(action, amount=0):
