@@ -1,48 +1,50 @@
-def create_recursive(dim, size, level=None):
-    if level is None:
-        level = dim
+def create_n_dim_array_recursive(n, size):
+    if n < 1:
+        return []
 
-    if dim == 1:
-        return [f'level {level}'] * size
+    def helper(level):
+        if level == 1:
+            return [f'level {n}' for _ in range(size)]
+        return [helper(level - 1) for _ in range(size)]
 
-    return [create_recursive(dim - 1, size, level) for _ in range(size)]
+    return helper(n)
 
-def create_iterative(dim, size):
-    arr = [f'level {dim}'] * size
-    for _ in range(dim - 1):
+def create_n_dim_array_iterative(n, size):
+    if n < 1:
+        return []
+
+    arr = [f'level {n}' for _ in range(size)]
+
+    for _ in range(n - 1):
         arr = [arr.copy() for _ in range(size)]
+
     return arr
 
-def print_2d(arr):
-    print("[")
-    for i, row in enumerate(arr):
-        line = "     ['" + "', '".join(row) + "']"
-        if i != len(arr) - 1:
-            line += ","  
-        print(line)
-    print("]")
+arr2 = create_n_dim_array_recursive(2, 3)
 
-def print_3d(arr):
-    print("[")
-    for i, block in enumerate(arr):
-        print("    [")
-        for row in block:
-            print("        ['" + "', '".join(row) + "'],")
-        print("    ]" + ("," if i != len(arr) - 1 else ""))
-    print("]")
+print("»> create_n_dim_array_recursive(2, 3)")
+print("[")
+for i in range(len(arr2)):
+    if i == len(arr2) - 1:
+        print("    " + str(arr2[i]))
+    else:
+        print("    " + str(arr2[i]) + ",")
+print("]")
 
-print("Рекурсивная:\n")
-res1 = create_recursive(2, 3)
-print_2d(res1)
 
-print()
-res2 = create_recursive(3, 2)
-print_3d(res2)
+arr3 = create_n_dim_array_recursive(3, 2)
 
-print("\nНерекурсивная:\n")
-res3 = create_iterative(2, 3)
-print_2d(res3)
-
-print()
-res4 = create_iterative(3, 2)
-print_3d(res4)
+print("\n»> create_n_dim_array_recursive(3, 2)")
+print("[")
+for i in range(len(arr3)):
+    print("    [")
+    for j in range(len(arr3[i])):
+        if j == len(arr3[i]) - 1:
+            print("        " + str(arr3[i][j])+ ",")
+        else:
+            print("        " + str(arr3[i][j]) + ",")
+    if i == len(arr3) - 1:
+        print("    ]")
+    else:
+        print("    ],")
+print("]")
