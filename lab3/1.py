@@ -48,3 +48,58 @@ for i in range(len(arr3)):
     else:
         print("    ],")
 print("]")
+
+
+
+
+
+def create_n_dim_array_recursive(n, size):
+    if n < 1:
+        return []
+
+    def helper(level):
+        if level == 1:
+            return [f'level {n}' for _ in range(size)]
+        return [helper(level - 1) for _ in range(size)]
+
+    return helper(n)
+
+def create_n_dim_array_iterative(n, size):
+    if n < 1:
+        return []
+
+    arr = [f'level {n}' for _ in range(size)]
+    for _ in range(n - 1):
+        arr = [arr.copy() for _ in range(size)]
+
+    return arr
+
+
+for dim, size in [(2, 3), (3, 2), (4, 2)]:
+    arr = create_n_dim_array_recursive(dim, size)
+
+    print(f"\n»> create_n_dim_array_recursive({dim}, {size})")
+
+    stack = [(arr, 0, 0, 1, False)]
+
+    while stack:
+        current, indent, idx, parent_size, is_close = stack.pop()
+
+        space = "    " * indent
+        is_last = (idx == parent_size - 1)
+
+        if is_close:
+            print(space + "]" + ("," if not is_last else ""))
+            continue
+
+        if not isinstance(current[0], list):
+            print(space + str(current) + ("," if not is_last else ""))
+            continue
+
+        print(space + "[")
+
+        stack.append((current, indent, idx, parent_size, True))
+
+        for i in range(len(current) - 1, -1, -1):
+            stack.append((current[i], indent + 1, i, len(current), False))
+
