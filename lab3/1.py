@@ -7,99 +7,84 @@ def create_n_dim_array_recursive(n, size):
             return [f'level {n}' for _ in range(size)]
         return [helper(level - 1) for _ in range(size)]
 
-    return helper(n)
+    arr = helper(n)
+
+    def pretty_print(data, indent=0):
+        if indent == 0:
+            print("[")
+        if data and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            for i, block in enumerate(data):
+                print("    " * (indent + 1) + "[")
+                for j, sub in enumerate(block):
+                    print("    " * (indent + 2) + "[" + ",".join(f"'{x}'" for x in sub) + "]", end="")
+                    if j < len(block) - 1:
+                        print(",")
+                    else:
+                        print()
+                print("    " * (indent + 1) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        else:
+            for i, sub in enumerate(data):
+                print("    " * (indent + 1) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        if indent == 0:
+            print("]")
+
+    pretty_print(arr)
+    return arr
 
 def create_n_dim_array_iterative(n, size):
     if n < 1:
         return []
 
     arr = [f'level {n}' for _ in range(size)]
-
     for _ in range(n - 1):
         arr = [arr.copy() for _ in range(size)]
 
-    return arr
+    def pretty_print(data, indent=0):
+        if indent == 0:
+            print("[")
+        if data and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            for i, block in enumerate(data):
+                print("    " * (indent + 1) + "[")
+                for j, sub in enumerate(block):
+                    print("    " * (indent + 2) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                    if j < len(block) - 1:
+                        print(",")
+                    else:
+                        print()
+                print("    " * (indent + 1) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        else:
+            for i, sub in enumerate(data):
+                print("    " * (indent + 1) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        if indent == 0:
+            print("]")
 
-arr2 = create_n_dim_array_recursive(2, 3)
+    pretty_print(arr)
+    return arr
 
 print("»> create_n_dim_array_recursive(2, 3)")
-print("[")
-for i in range(len(arr2)):
-    if i == len(arr2) - 1:
-        print("    " + str(arr2[i]))
-    else:
-        print("    " + str(arr2[i]) + ",")
-print("]")
-
-
-arr3 = create_n_dim_array_recursive(3, 2)
+create_n_dim_array_recursive(2, 3)
 
 print("\n»> create_n_dim_array_recursive(3, 2)")
-print("[")
-for i in range(len(arr3)):
-    print("    [")
-    for j in range(len(arr3[i])):
-        if j == len(arr3[i]) - 1:
-            print("        " + str(arr3[i][j])+ ",")
-        else:
-            print("        " + str(arr3[i][j]) + ",")
-    if i == len(arr3) - 1:
-        print("    ]")
-    else:
-        print("    ],")
-print("]")
+create_n_dim_array_recursive(3, 2)
 
+print("\n»> create_n_dim_array_iterative(2, 3)")
+create_n_dim_array_iterative(2, 3)
 
-
-
-
-def create_n_dim_array_recursive(n, size):
-    if n < 1:
-        return []
-
-    def helper(level):
-        if level == 1:
-            return [f'level {n}' for _ in range(size)]
-        return [helper(level - 1) for _ in range(size)]
-
-    return helper(n)
-
-def create_n_dim_array_iterative(n, size):
-    if n < 1:
-        return []
-
-    arr = [f'level {n}' for _ in range(size)]
-    for _ in range(n - 1):
-        arr = [arr.copy() for _ in range(size)]
-
-    return arr
-
-
-for dim, size in [(2, 3), (3, 2), (4, 2)]:
-    arr = create_n_dim_array_recursive(dim, size)
-
-    print(f"\n»> create_n_dim_array_recursive({dim}, {size})")
-
-    stack = [(arr, 0, 0, 1, False)]
-
-    while stack:
-        current, indent, idx, parent_size, is_close = stack.pop()
-
-        space = "    " * indent
-        is_last = (idx == parent_size - 1)
-
-        if is_close:
-            print(space + "]" + ("," if not is_last else ""))
-            continue
-
-        if not isinstance(current[0], list):
-            print(space + str(current) + ("," if not is_last else ""))
-            continue
-
-        print(space + "[")
-
-        stack.append((current, indent, idx, parent_size, True))
-
-        for i in range(len(current) - 1, -1, -1):
-            stack.append((current[i], indent + 1, i, len(current), False))
-
+print("\n»> create_n_dim_array_iterative(3, 2)")
+create_n_dim_array_iterative(3, 2)
