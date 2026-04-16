@@ -72,6 +72,36 @@ for i in range(len(arr3)):
         print("    ],")
 print("]")
 
+arr4 = create_n_dim_array_iterative(2, 3)
+
+print("»> create_n_dim_array_iterative(2, 3)")
+print("[")
+for i in range(len(arr4)):
+    if i == len(arr4) - 1:
+        print("    " + str(arr4[i]))
+    else:
+        print("    " + str(arr4[i]) + ",")
+print("]")
+
+
+arr5 = create_n_dim_array_iterative(3, 2)
+
+print("\n»> create_n_dim_array_iterative(3, 2)")
+print("[")
+for i in range(len(arr5)):
+    print("    [")
+    for j in range(len(arr5[i])):
+        if j == len(arr5[i]) - 1:
+            print("        " + str(arr5[i][j])+ ",")
+        else:
+            print("        " + str(arr5[i][j]) + ",")
+    if i == len(arr5) - 1:
+        print("    ]")
+    else:
+        print("    ],")
+print("]")
+
+
 ```
 **Вывод программы:**
 
