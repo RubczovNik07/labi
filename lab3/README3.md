@@ -105,7 +105,8 @@ print("]")
 ```
 **Вывод программы:**
 
-<img width="555" height="647" alt="image" src="https://github.com/user-attachments/assets/b5d0e2ee-78e2-461e-af7a-167cfa1147ed" />
+<img width="326" height="604" alt="image" src="https://github.com/user-attachments/assets/52cee920-bfba-42bb-ab36-db303acbbda8" />
+
 
 
 
