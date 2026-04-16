@@ -30,77 +30,87 @@ def create_n_dim_array_recursive(n, size):
             return [f'level {n}' for _ in range(size)]
         return [helper(level - 1) for _ in range(size)]
 
-    return helper(n)
+    arr = helper(n)
+
+    def pretty_print(data, indent=0):
+        if indent == 0:
+            print("[")
+        if data and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            for i, block in enumerate(data):
+                print("    " * (indent + 1) + "[")
+                for j, sub in enumerate(block):
+                    print("    " * (indent + 2) + "[" + ",".join(f"'{x}'" for x in sub) + "]", end="")
+                    if j < len(block) - 1:
+                        print(",")
+                    else:
+                        print()
+                print("    " * (indent + 1) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        else:
+            for i, sub in enumerate(data):
+                print("    " * (indent + 1) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        if indent == 0:
+            print("]")
+
+    pretty_print(arr)
+    return arr
 
 def create_n_dim_array_iterative(n, size):
     if n < 1:
         return []
 
     arr = [f'level {n}' for _ in range(size)]
-
     for _ in range(n - 1):
         arr = [arr.copy() for _ in range(size)]
 
+    def pretty_print(data, indent=0):
+        if indent == 0:
+            print("[")
+        if data and isinstance(data[0], list) and data[0] and isinstance(data[0][0], list):
+            for i, block in enumerate(data):
+                print("    " * (indent + 1) + "[")
+                for j, sub in enumerate(block):
+                    print("    " * (indent + 2) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                    if j < len(block) - 1:
+                        print(",")
+                    else:
+                        print()
+                print("    " * (indent + 1) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        else:
+            for i, sub in enumerate(data):
+                print("    " * (indent + 1) + "[" + ", ".join(f"'{x}'" for x in sub) + "]", end="")
+                if i < len(data) - 1:
+                    print(",")
+                else:
+                    print()
+        if indent == 0:
+            print("]")
+
+    pretty_print(arr)
     return arr
 
-arr2 = create_n_dim_array_recursive(2, 3)
-
 print("»> create_n_dim_array_recursive(2, 3)")
-print("[")
-for i in range(len(arr2)):
-    if i == len(arr2) - 1:
-        print("    " + str(arr2[i]))
-    else:
-        print("    " + str(arr2[i]) + ",")
-print("]")
-
-
-arr3 = create_n_dim_array_recursive(3, 2)
+create_n_dim_array_recursive(2, 3)
 
 print("\n»> create_n_dim_array_recursive(3, 2)")
-print("[")
-for i in range(len(arr3)):
-    print("    [")
-    for j in range(len(arr3[i])):
-        if j == len(arr3[i]) - 1:
-            print("        " + str(arr3[i][j])+ ",")
-        else:
-            print("        " + str(arr3[i][j]) + ",")
-    if i == len(arr3) - 1:
-        print("    ]")
-    else:
-        print("    ],")
-print("]")
+create_n_dim_array_recursive(3, 2)
 
-arr4 = create_n_dim_array_iterative(2, 3)
-
-print("»> create_n_dim_array_iterative(2, 3)")
-print("[")
-for i in range(len(arr4)):
-    if i == len(arr4) - 1:
-        print("    " + str(arr4[i]))
-    else:
-        print("    " + str(arr4[i]) + ",")
-print("]")
-
-
-arr5 = create_n_dim_array_iterative(3, 2)
+print("\n»> create_n_dim_array_iterative(2, 3)")
+create_n_dim_array_iterative(2, 3)
 
 print("\n»> create_n_dim_array_iterative(3, 2)")
-print("[")
-for i in range(len(arr5)):
-    print("    [")
-    for j in range(len(arr5[i])):
-        if j == len(arr5[i]) - 1:
-            print("        " + str(arr5[i][j])+ ",")
-        else:
-            print("        " + str(arr5[i][j]) + ",")
-    if i == len(arr5) - 1:
-        print("    ]")
-    else:
-        print("    ],")
-print("]")
-
+create_n_dim_array_iterative(3, 2)
 
 ```
 **Вывод программы:**
