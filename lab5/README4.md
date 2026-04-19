@@ -40,7 +40,7 @@ def merge_sequences(seq1, seq2, strategy='zip'):
                 yield b
 ```
 
-### Функция свёртки reduce_by_type
+### 2. Функция свёртки reduce_by_type
 
 Принимает последовательность, преобразует её в список, проверяет однородность типов и сворачивает в зависимости от типа:
 
@@ -59,10 +59,43 @@ def reduce_by_type(sequence):
     # ... и так для list, tuple, bool
 ```
 
-### Применение filter и map
+### 3. Применение filter и map
 
 В примере использования:
 
 - Для целых чисел применён filter для отбора чётных элементов.
 - Для строк применён map(str.upper) для перевода в верхний регистр.
 - Для демонстрации reduce (через functools.reduce) используется внутри reduce_by_type.
+
+### 4. Пример выполнения
+
+```python
+from itertools import zip_longest
+from functools import reduce
+
+# Пример 1: целые числа, filter + reduce
+seq_a = [1, 2, 3, 4]
+seq_b = [10, 20, 30]
+merged = merge_sequences(seq_a, seq_b, strategy='interleave')
+filtered = filter(lambda x: x % 2 == 0, merged)
+result = reduce_by_type(filtered)
+print(f"Сумма чётных элементов: {result}")   # 66
+
+# Пример 2: строки, map + reduce
+words1 = ["Hello", "world"]
+words2 = [" from", " Python"]
+merged_str = merge_sequences(words1, words2, strategy='chain')
+mapped = map(str.upper, merged_str)
+result_str = reduce_by_type(mapped)
+print(f"Результат конкатенации: {result_str}")  # HELLOWORLD FROM PYTHON
+```
+**Вывод программы:**
+
+<img width="563" height="92" alt="image" src="https://github.com/user-attachments/assets/045873ef-8b57-43a1-bb4e-5dea3cba131b" />
+
+## Список использованных источников
+
+1. [Python Documentation: itertools.zip_longest](https://docs.python.org/3/library/itertools.html#itertools.zip_longest)
+2. [Python Documentation: functools.reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
+3. [PEP 255 – Simple Generators](https://peps.python.org/pep-0255/)
+4. [Python Tutorial: Functional Programming Tools]([https://peps.python.org/pep-0255/](https://docs.python.org/3/howto/functional.html))
