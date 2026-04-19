@@ -7,7 +7,6 @@
 import sys
 from io import StringIO
 
-# ---------- Замыкание из задания 1 ----------
 def create_hero(initial_hp=100):
     current_hp = max(0, min(initial_hp, 100))
     
