@@ -98,4 +98,4 @@ print(f"Результат конкатенации: {result_str}")  # HELLOWORL
 1. [Python Documentation: itertools.zip_longest](https://docs.python.org/3/library/itertools.html#itertools.zip_longest)
 2. [Python Documentation: functools.reduce](https://docs.python.org/3/library/functools.html#functools.reduce)
 3. [PEP 255 – Simple Generators](https://peps.python.org/pep-0255/)
-4. [Python Tutorial: Functional Programming Tools]([https://peps.python.org/pep-0255/](https://docs.python.org/3/howto/functional.html))
+4. [Python Tutorial: Functional Programming Tools](https://docs.python.org/3/howto/functional.html)
