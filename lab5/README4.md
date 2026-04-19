@@ -39,3 +39,30 @@ def merge_sequences(seq1, seq2, strategy='zip'):
             if b is not None:
                 yield b
 ```
+
+### Функция свёртки reduce_by_type
+
+Принимает последовательность, преобразует её в список, проверяет однородность типов и сворачивает в зависимости от типа:
+
+```python
+def reduce_by_type(sequence):
+    items = list(sequence)
+    if not items:
+        return None
+    elem_type = type(items[0])
+    if not all(isinstance(x, elem_type) for x in items):
+        return items
+    if elem_type is int:
+        return reduce(lambda x, y: x + y, items)
+    elif elem_type is str:
+        return reduce(lambda x, y: x + y, items)
+    # ... и так для list, tuple, bool
+```
+
+### Применение filter и map
+
+В примере использования:
+
+-Для целых чисел применён filter для отбора чётных элементов.
+-Для строк применён map(str.upper) для перевода в верхний регистр.
+-Для демонстрации reduce (через functools.reduce) используется внутри reduce_by_type.
