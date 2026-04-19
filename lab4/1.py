@@ -1,10 +1,12 @@
+# task2_suppress_decorator.py
+# Декоратор подавляет любой вывод в консоль внутри обёрнутой функции
+
 import sys
 from io import StringIO
 
-# Замыкание для отслеживания HP героя
+# ---------- Замыкание из задания 1 ----------
 def create_hero(initial_hp=100):
-
-    current_hp = max(0, min(initial_hp, 100))  # Ограничиваем начальное значение
+    current_hp = max(0, min(initial_hp, 100))
     
     def handle_action(action, amount=0):
         nonlocal current_hp
@@ -28,68 +30,54 @@ def create_hero(initial_hp=100):
     
     return handle_action
 
-# Декоратор для подавления вывода функции на консоль
+# ---------- Декоратор для подавления вывода ----------
 def suppress_console_output(func):
-
     def wrapper(*args, **kwargs):
-        # Сохраняем оригинальный stdout
         original_stdout = sys.stdout
-        # Создаем буфер для перехвата вывода
-        sys.stdout = StringIO()
-        
+        sys.stdout = StringIO()          # перехватываем вывод
         try:
-            # Выполняем функцию
             result = func(*args, **kwargs)
-            # Получаем перехваченный вывод (но не выводим его)
-            captured_output = sys.stdout.getvalue()
+            # Перехваченный вывод игнорируется
             return result
         finally:
-            # Восстанавливаем оригинальный stdout
-            sys.stdout = original_stdout
-    
+            sys.stdout = original_stdout  # восстанавливаем
     return wrapper
 
-# Создаем героя с замыканием
-hero = create_hero(100)
+# ---------- Применяем декоратор к замыканию ----------
+hero = create_hero(80)   # создаём героя
 
-# Применяем декоратор к замыканию
 @suppress_console_output
 def use_hero_action(action, amount=0):
-    """Обертка для использования действий героя с подавленным выводом"""
+    """Обёртка, которая вызывает hero и подавляет весь вывод внутри себя"""
+    # Этот print не попадёт в консоль благодаря декоратору
+    print(f"Логирование: действие {action} с amount={amount}")
     return hero(action, amount)
 
-# Тестирование
+# ---------- Тестирование ----------
 if __name__ == "__main__":
-    print("=== Тестирование без декоратора (обычный вывод) ===")
-    hero1 = create_hero(80)
-    print(hero1("status"))
-    print(hero1("damage", 30))
-    print(hero1("heal", 60))  # Попытка вылечиться выше 100
-    print(hero1("damage", 200))  # Попытка урона ниже 0
-    
-    print("\n=== Тестирование с декоратором (вывод подавлен) ===")
-    hero2 = create_hero(80)
-    
-    # Эти вызовы не будут выводить ничего в консоль
-    result1 = use_hero_action("damage", 30)
-    result2 = use_hero_action("heal", 60)
-    result3 = use_hero_action("damage", 200)
-    
-    # Но мы можем получить результаты как возвращаемые значения
-    print(f"Результат урона: {result1}")
-    print(f"Результат лечения: {result2}")
-    print(f"Результат сильного урона: {result3}")
-    
-    print("\n=== Дополнительное тестирование граничных значений ===")
-    hero3 = create_hero(50)
-    
+    print("=== Без декоратора (вывод виден) ===")
+    h = create_hero(50)
+    print(h("heal", 30))
+    print(h("damage", 20))
+
+    print("\n=== С декоратором (вывод подавлен) ===")
+    # Все print внутри use_hero_action не выводятся
+    res1 = use_hero_action("damage", 30)
+    res2 = use_hero_action("heal", 60)
+    res3 = use_hero_action("damage", 200)
+    res4 = use_hero_action("status")
+
+    print(f"Результат урона: {res1}")
+    print(f"Результат лечения: {res2}")
+    print(f"Результат сильного урона: {res3}")
+    print(f"Результат статуса: {res4}")
+
+    print("\n=== Дополнительная проверка: функция с несколькими print ===")
     @suppress_console_output
-    def test_hero_actions():
-        print(hero3("heal", 100))  # Должен показать 50 -> 100
-        print(hero3("damage", 150))  # Должен показать 100 -> 0
-        print(hero3("reset"))  # Должен показать 0 -> 100
-        return "Все действия выполнены"
-    
-    final_result = test_hero_actions()
-    print(f"Итоговый результат: {final_result}")
-    print(hero3("status"))  # Проверяем финальное состояние
+    def noisy():
+        print("Этот текст не появится")
+        print("И этот тоже")
+        return "Всё подавлено"
+
+    result = noisy()
+    print(f"Возвращено: {result}")
