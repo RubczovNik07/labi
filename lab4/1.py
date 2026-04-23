@@ -1,4 +1,3 @@
-# task2_suppress_decorator.py
 # Декоратор подавляет любой вывод в консоль внутри обёрнутой функции
 
 import sys
@@ -48,7 +47,6 @@ hero = create_hero(80)   # создаём героя
 
 @suppress_console_output
 def use_hero_action(action, amount=0):
-    """Обёртка, которая вызывает hero и подавляет весь вывод внутри себя"""
     # Этот print не попадёт в консоль благодаря декоратору
     print(f"Логирование: действие {action} с amount={amount}")
     return hero(action, amount)
