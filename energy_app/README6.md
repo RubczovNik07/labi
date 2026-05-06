@@ -1,1 +1,79 @@
+# Отчёт по лабораторной работе
 
+## Задание
+
+**Условие:**  
+Создать пакет, содержащий 3 модуля, и подключить его к основной программе. Основная программа должна предоставлять графический пользовательский интерфейс с возможностью ввода параметров и отображения результатов расчёта, а также возможность сохранения результатов в отчёт формата .docx или .xlsx.
+
+## Описание проделанной работы
+
+### 1. Создание структуры проекта
+
+Был создан Python-пакет energy_package, включающий три модуля:
+
+appliances.py — содержит данные о мощности бытовых приборов;
+
+calculator.py — выполняет расчёт потребления электроэнергии и стоимости;
+
+report.py — отвечает за сохранение результатов в файлы отчёта.
+
+### 2. Модуль appliances.py
+
+В данном модуле хранится информация о бытовых приборах и их мощности:
+
+```python
+APPLIANCES = {
+    "Утюг": 2.0,
+    "Телевизор": 0.15,
+    "Стиральная машина": 1.5
+}
+```
+
+### 3. Модуль calculator.py
+
+Модуль содержит функции для выполнения расчётов:
+
+-расчёт потребления электроэнергии;
+-расчёт стоимости использования электроэнергии.
+
+```python
+def calculate_energy(power_kw, hours_per_day, days):
+    return power_kw * hours_per_day * days
+
+def calculate_cost(energy_kwh, tariff):
+    return energy_kwh * tariff
+```
+### 4. Модуль report.py
+
+Данный модуль обеспечивает сохранение результатов работы программы в файлы формата .docx и .xlsx с использованием библиотек python-docx и openpyxl.
+
+### 5. Основная программа (GUI)
+
+Основная программа реализована с использованием библиотеки Tkinter и предоставляет:
+
+-ввод исходных данных (прибор, часы, дни, тариф);
+-выполнение расчётов;
+-отображение результата в графическом интерфейсе;
+-сохранение результатов в файл.
+
+**Вывод программы:**
+
+<img width="362" height="369" alt="image" src="https://github.com/user-attachments/assets/15d19b3b-0e27-445e-a939-afcfc1d0df9e" />
+
+
+<img width="877" height="66" alt="image" src="https://github.com/user-attachments/assets/5e1f76be-4cc2-4f86-b2af-e719808f2957" />
+
+
+<img width="805" height="321" alt="image" src="https://github.com/user-attachments/assets/d943ec92-713b-435e-8471-566e5863535f" />
+
+
+<img width="417" height="141" alt="image" src="https://github.com/user-attachments/assets/9acb27f2-26a9-447f-9c8c-f46b98106c5e" />
+
+
+
+## Список использованных источников
+
+1. [Python Software Foundation. Python Documentation (официальная документация](https://docs.python.org/3/⁠ )
+2. [Python Software Foundation. Tkinter — Python interface to Tcl/Tk](https://docs.python.org/3/library/tkinter.html⁠ )
+3. [Python Software Foundation. openpyxl documentation (работа с Excel файлами)](https://openpyxl.readthedocs.io/⁠ )
+4. [Python Software Foundation. python-docx documentation (работа с Word файлами)⁠](https://python-docx.readthedocs.io/⁠)
