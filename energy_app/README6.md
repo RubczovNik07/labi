@@ -73,7 +73,6 @@ def calculate_cost(energy_kwh, tariff):
 
 ## Список использованных источников
 
-1. [Python Software Foundation. Python Documentation (официальная документация](https://docs.python.org/3/⁠ )
-2. [Python Software Foundation. Tkinter — Python interface to Tcl/Tk](https://docs.python.org/3/library/tkinter.html⁠ )
-3. [Python Software Foundation. openpyxl documentation (работа с Excel файлами)](https://openpyxl.readthedocs.io/⁠ )
-4. [Python Software Foundation. python-docx documentation (работа с Word файлами)⁠](https://python-docx.readthedocs.io/⁠)
+1. [Python Docx Library Documentation]([https://docs.python.org/3/⁠](https://python-docx.readthedocs.io/ )
+2. [Openpyxl Library Documentation ](https://openpyxl.readthedocs.io/ )
+3. [Tkinter Documentation](https://docs.python.org/3/library/tkinter.html )
