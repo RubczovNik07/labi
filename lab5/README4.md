@@ -3,95 +3,125 @@
 ## Задание
 
 **Условие:**  
-Реализовать генератор для объединения двух последовательностей по заданной стратегии (`zip`, `chain`, `interleave`). К генератору должна быть применена хотя бы одна из функций `map`, `reduce`, `filter`.  
+Реализовать генератор для объединения нескольких последовательностей по заданной стратегии (chain, zip, round_robin).
+К генератору должна быть применена хотя бы одна из функций map, filter, reduce.
+
 Свёртка (редукция) полученной последовательности должна зависеть от типа данных элементов:
-- `int` → сумма
-- `str` → конкатенация
-- `list` → слияние списков
-- `tuple` → слияние кортежей
-- `bool` → логическое И (all)
-- другие типы → возвращаются в виде списка
+int, float → сумма
+str → конкатенация
+другие типы → список
 
 ## Описание проделанной работы
 
 ### 1. Генератор `merge_sequences`
 
-Функция-генератор принимает две итерабельные последовательности и строку `strategy`.  
+Функция-генератор принимает список последовательностей и стратегию объединения.
+
 В зависимости от стратегии:
-
-- `'zip'` – выдаёт элементы попарно, пока хватает короткой последовательности.  
-- `'chain'` – сначала все элементы первой последовательности, затем все элементы второй.  
-- `'interleave'` – чередует элементы, пока есть хотя бы один элемент в любой из последовательностей (с помощью `itertools.zip_longest`).
+chain – последовательности объединяются последовательно
+zip – элементы берутся по индексам (с использованием zip_longest)
+round_robin – элементы берутся поочерёдно из каждой последовательности
 
 ```python
-def merge_sequences(seq1, seq2, strategy='zip'):
-    if strategy == 'zip':
-        for a, b in zip(seq1, seq2):
-            yield a
-            yield b
-    elif strategy == 'chain':
-        yield from seq1
-        yield from seq2
-    elif strategy == 'interleave':
-        for a, b in zip_longest(seq1, seq2, fillvalue=None):
-            if a is not None:
-                yield a
-            if b is not None:
-                yield b
+from itertools import zip_longest
+
+def merge_sequences(seqs, strategy="chain"):
+    if strategy == "chain":
+        for seq in seqs:
+            for item in seq:
+                yield item
+
+    elif strategy == "zip":
+        for items in zip_longest(*seqs, fillvalue=None):
+            for item in items:
+                if item is not None:
+                    yield item
+
+    elif strategy == "round_robin":
+        seqs = [iter(s) for s in seqs]
+        while seqs:
+            next_seqs = []
+            for it in seqs:
+                try:
+                    yield next(it)
+                    next_seqs.append(it)
+                except StopIteration:
+                    continue
+            seqs = next_seqs
 ```
 
-### 2. Функция свёртки reduce_by_type
+### 2. Функция свёртки fold_sequence
 
-Принимает последовательность, преобразует её в список, проверяет однородность типов и сворачивает в зависимости от типа:
+Функция выполняет редукцию последовательности в зависимости от типа данных.
+
+Используются:
+filter — для удаления None
+map — для приведения типов
+reduce — для свёртки
 
 ```python
-def reduce_by_type(sequence):
-    items = list(sequence)
-    if not items:
+from functools import reduce
+
+def fold_sequence(seq):
+    seq = list(seq)
+
+    if not seq:
         return None
-    elem_type = type(items[0])
-    if not all(isinstance(x, elem_type) for x in items):
-        return items
-    if elem_type is int:
-        return reduce(lambda x, y: x + y, items)
-    elif elem_type is str:
-        return reduce(lambda x, y: x + y, items)
-    # ... и так для list, tuple, bool
+
+    # filter — удаление None
+    seq = list(filter(lambda x: x is not None, seq))
+
+    # числа → сумма
+    if all(isinstance(x, (int, float)) for x in seq):
+        seq = list(map(float, seq))  # map
+        return reduce(lambda a, b: a + b, seq)
+
+    # строки → конкатенация
+    elif all(isinstance(x, str) for x in seq):
+        seq = list(map(str, seq))  # map
+        return reduce(lambda a, b: a + b, seq)
+
+    # остальные типы
+    else:
+        return list(map(str, seq))
 ```
 
-### 3. Применение filter и map
+### 3. Применение map, filter, reduce
 
-В примере использования:
+В программе:
 
-- Для целых чисел применён filter для отбора чётных элементов.
-- Для строк применён map(str.upper) для перевода в верхний регистр.
-- Для демонстрации reduce (через functools.reduce) используется внутри reduce_by_type.
+filter — удаляет значения None
+
+map — приводит элементы к нужному типу (float, str)
+
+reduce — выполняет свёртку (сумма или конкатенация)
 
 ### 4. Пример выполнения
 
 ```python
-from itertools import zip_longest
-from functools import reduce
+# Числовые последовательности
+seq1 = ["a", "b"]
+seq2 = ["c", "d"]
+seq3 = ["e"]
 
-# Пример 1: целые числа, filter + reduce
-seq_a = [1, 2, 3, 4]
-seq_b = [10, 20, 30]
-merged = merge_sequences(seq_a, seq_b, strategy='interleave')
-filtered = filter(lambda x: x % 2 == 0, merged)
-result = reduce_by_type(filtered)
-print(f"Сумма чётных элементов: {result}")   # 66
+# --- chain ---
+gen_chain = merge_sequences([seq1, seq2, seq3], strategy="chain")
+result_chain = fold_sequence(gen_chain)
+print("chain:", result_chain)
 
-# Пример 2: строки, map + reduce
-words1 = ["Hello", "world"]
-words2 = [" from", " Python"]
-merged_str = merge_sequences(words1, words2, strategy='chain')
-mapped = map(str.upper, merged_str)
-result_str = reduce_by_type(mapped)
-print(f"Результат конкатенации: {result_str}")  # HELLOWORLD FROM PYTHON
+# --- zip ---
+gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
+result_zip = fold_sequence(gen_zip)
+print("zip:", result_zip)
+
+# --- round_robin ---
+gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
+result_rr = fold_sequence(gen_rr)
+print("round_robin:", result_rr)
 ```
 **Вывод программы:**
 
-<img width="563" height="92" alt="image" src="https://github.com/user-attachments/assets/045873ef-8b57-43a1-bb4e-5dea3cba131b" />
+<img width="265" height="145" alt="image" src="https://github.com/user-attachments/assets/bd72ff79-2405-4c0f-b7b5-4130573e996f" />
 
 ## Список использованных источников
 
