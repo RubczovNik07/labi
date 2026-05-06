@@ -104,24 +104,29 @@ seq1 = ["a", "b"]
 seq2 = ["c", "d"]
 seq3 = ["e"]
 
-# --- chain ---
+# chain
 gen_chain = merge_sequences([seq1, seq2, seq3], strategy="chain")
-result_chain = fold_sequence(gen_chain)
-print("chain:", result_chain)
+print("chain:", list(gen_chain))
+gen_chain = merge_sequences([seq1, seq2, seq3], strategy="chain")
+print("chain (reduce):", fold_sequence(gen_chain))
 
-# --- zip ---
+# zip
 gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
-result_zip = fold_sequence(gen_zip)
-print("zip:", result_zip)
+print("zip:", list(gen_zip))
+gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
+print("zip (reduce):", fold_sequence(gen_zip))
 
-# --- round_robin ---
+# round_robin
 gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
-result_rr = fold_sequence(gen_rr)
-print("round_robin:", result_rr)
+print("round_robin:", list(gen_rr))
+gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
+print("round_robin (reduce):", fold_sequence(gen_rr))
+
 ```
 **Вывод программы:**
 
-<img width="265" height="145" alt="image" src="https://github.com/user-attachments/assets/bd72ff79-2405-4c0f-b7b5-4130573e996f" />
+<img width="424" height="183" alt="image" src="https://github.com/user-attachments/assets/902dd332-fae4-4fae-b7bc-be6dc713fb17" />
+
 
 ## Список использованных источников
 
