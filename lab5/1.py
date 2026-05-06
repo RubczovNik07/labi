@@ -26,7 +26,7 @@ def merge_sequences(seqs, strategy="chain"):
                     continue
             seqs = next_seqs
 
-# Функция свёртки по типу данных
+# Функция свёртки
 def fold_sequence(seq):
     seq = list(seq)
 
@@ -36,37 +36,34 @@ def fold_sequence(seq):
     # filter
     seq = list(filter(lambda x: x is not None, seq))
 
-    # числа → сумма
-    if all(isinstance(x, (int, float)) for x in seq):
-        seq = list(map(float, seq))  # map
-        return reduce(lambda a, b: a + b, seq)
-
-    # строки → склейка
-    elif all(isinstance(x, str) for x in seq):
+    # строки → конкатенация
+    if all(isinstance(x, str) for x in seq):
         seq = list(map(str, seq))  # map
         return reduce(lambda a, b: a + b, seq)
 
-    # иначе
-    else:
-        return list(map(str, filter(lambda x: x is not None, seq)))
+    return seq
 
-# ===== ПРИМЕРЫ =====
+# ===== ПРИМЕР =====
 
 seq1 = ["a", "b"]
 seq2 = ["c", "d"]
 seq3 = ["e"]
 
-# --- chain ---
+# chain
 gen_chain = merge_sequences([seq1, seq2, seq3], strategy="chain")
-result_chain = fold_sequence(gen_chain)
-print("chain:", result_chain)
+print("chain:", list(gen_chain))
+gen_chain = merge_sequences([seq1, seq2, seq3], strategy="chain")
+print("chain (reduce):", fold_sequence(gen_chain))
 
-# --- zip ---
+# zip
 gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
-result_zip = fold_sequence(gen_zip)
-print("zip:", result_zip)
+print("zip:", list(gen_zip))
+gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
+print("zip (reduce):", fold_sequence(gen_zip))
 
-# --- round_robin ---
+# round_robin
 gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
-result_rr = fold_sequence(gen_rr)
-print("round_robin:", result_rr)
+print("round_robin:", list(gen_rr))
+gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
+print("round_robin (reduce):", fold_sequence(gen_rr))
+
