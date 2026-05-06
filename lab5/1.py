@@ -66,7 +66,7 @@ gen_zip = merge_sequences([seq1, seq2, seq3], strategy="zip")
 result_zip = fold_sequence(gen_zip)
 print("zip:", result_zip)
 
-# --- round_robin (у тебя уже был, оставим для полноты)
+# --- round_robin ---
 gen_rr = merge_sequences([seq1, seq2, seq3], strategy="round_robin")
 result_rr = fold_sequence(gen_rr)
 print("round_robin:", result_rr)
