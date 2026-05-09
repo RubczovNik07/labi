@@ -66,7 +66,11 @@ def calculate_cost(energy_kwh, tariff):
 
 **Вывод программы:**
 
+<img width="974" height="768" alt="image" src="https://github.com/user-attachments/assets/e0c473cc-c6bc-4514-a2c1-d9775ea1a97c" />
 
+<img width="652" height="619" alt="image" src="https://github.com/user-attachments/assets/3ce68d88-cc99-407a-af09-ad975d4c05d3" />
+
+<img width="394" height="355" alt="image" src="https://github.com/user-attachments/assets/bfd29c02-0550-47ec-a727-1589e4bb52d7" />
 
 ## Список использованных источников
 
