@@ -64,7 +64,7 @@ def calculate_cost(energy_kwh, tariff):
 отображение результата в интерфейсе
 сохранение результатов в файлы DOCX и XLSX
 
-**Вывод программы:**
+### Вывод программы:
 
 <img width="974" height="768" alt="image" src="https://github.com/user-attachments/assets/e0c473cc-c6bc-4514-a2c1-d9775ea1a97c" />
 
