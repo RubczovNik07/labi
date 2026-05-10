@@ -90,4 +90,4 @@ Cost = E × tariff
 
 1. [Python Docx Library Documentation](https://python-docx.readthedocs.io/)
 2. [Openpyxl Library Documentation ](https://openpyxl.readthedocs.io/ )
-3. [Tkinter Documentation](https://docs.python.org/3/library/tkinter.html )
+3. [PyGObject documentation](https://pygobject.readthedocs.io/)
