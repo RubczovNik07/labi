@@ -75,14 +75,19 @@ class EnergyWindow(Gtk.Window):
 
             name = self.combo.get_active_text()
 
-            if not name or name not in self.appliances:
+            if not name:
                 self.label.set_text("Выберите прибор")
                 return
 
             appliance = self.appliances[name]
 
-
             calc = EnergyCalculator(appliance, hours, days, tariff)
+
+            self.data = {
+                "Прибор": name,
+                "Энергия": calc.energy(),
+                "Стоимость": calc.cost()
+            }
 
             self.label.set_text(
                 f"{calc.energy():.2f} кВт·ч / {calc.cost():.2f} руб."
