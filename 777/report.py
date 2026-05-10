@@ -4,7 +4,7 @@ from openpyxl import Workbook
 
 class Report:
 
-    def init(self, data):
+    def __init__(self, data):
         self.data = data
 
     def save_docx(self, filename):
