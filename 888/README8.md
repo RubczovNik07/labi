@@ -55,7 +55,7 @@ https://www.python.org/downloads/
 
 `bash
 pip install toga
-`
+
 
 #### 3. Запустить программу
 
@@ -63,7 +63,7 @@ pip install toga
 
 `bash
 py -3.12 main.py
-`
+
 
 ### Краткая справка
 
