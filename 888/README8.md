@@ -53,7 +53,7 @@ https://www.python.org/downloads/
 
 Открыть терминал и выполнить команду:
 
-`bash
+`bash`
 pip install toga
 
 
@@ -61,7 +61,7 @@ pip install toga
 
 Перейти в папку с проектом и выполнить команду:
 
-`bash
+`bash`
 py -3.12 main.py
 
 
